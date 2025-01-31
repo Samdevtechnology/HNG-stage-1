@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Simple Check API
 
-## Getting Started
+A simple check API endpoint built with Next.js that returns basic service information including email contact, current timestamp, and repository URL. This API is designed to monitor service status and provide essential service metadata.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
+- [Features](#features)
+- [Setup](#setup)
+- [API Documentation](#api-documentation)
+  - [Simple Check Endpoint](#simple-check-endpoint)
+    - [Success Response](#success-response)
+    - [Response Fields](#response-fields)
+    - [Example Usage](#example-usage)
+- [Tech Stack](#tech-stack)
+
+## Features
+
+- Returns service status and metadata in JSON format
+- Implements CORS for cross-origin requests
+- Provides ISO 8601 formatted timestamps
+- Supports standard HTTP status codes
+
+## Setup
+
+1. Clone the repository:
+   \```bash
+   git clone <your-repository-url>
+   \```
+
+2. Install dependencies:
+   \```bash
+   npm install
+   \```
+
 # or
+
+yarn install
+
+# or
+
+pnpm install
+
+3. Run the development server:
+   \```bash
+   npm run dev
+   \```
+
+# or
+
 yarn dev
+
 # or
+
 pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## The API will be available at `http://localhost:3000/api`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Simple Check Endpoint
 
-## Learn More
+**URL**: `/api`
 
-To learn more about Next.js, take a look at the following resources:
+**Method**: `GET`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**CORS**: Enabled
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Success Response
 
-## Deploy on Vercel
+**Code**: `200 OK`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Content example**:
+\```json
+{
+"email": "samdevtechnology@gmail.com",
+"timestamp": "2025-01-31T12:34:56.789Z",
+"gitUrl": "The GitHub URL of the project's codebase"
+}
+\```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Response Fields
+
+| Field     | Type   | Description                            |
+| --------- | ------ | -------------------------------------- |
+| email     | string | Contact email for service support      |
+| timestamp | string | Current server time in ISO 8601 format |
+| gitUrl    | string | GitHub repository URL for the project  |
+
+#### Example Usage
+
+Using curl:
+\```bash
+curl http://localhost:3000/api
+\```
+
+Using JavaScript fetch:
+\```javascript
+fetch('http://localhost:3000/api')
+.then(response => response.json())
+.then(data => console.log(data));
+\```
+
+## Tech Stack
+
+This project is built using [Next.js](https://nextjs.org/) with TypeScript. It's a project of HNG internship (Stage 1 project) [https://hng.tech/hire/nodejs-developers](https://hng.tech/hire/nodejs-developers).
